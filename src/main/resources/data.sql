@@ -3,7 +3,7 @@ DELETE FROM users;
 DELETE FROM news;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
-INSERT INTO users (surname,name,patronymic,sex, password) VALUES
+INSERT INTO users (surname,name,patronymic,gender, password) VALUES
   ('Васёв','Вася','Васильевич','m', 'user'),
   ('Петров','Петя','Петрович','m', 'admin');
 
@@ -24,7 +24,7 @@ VALUES (100000,100002),
        (100000,100004),
        (100001,100005);
 
-INSERT INTO news (head,mintext,new,category_id,link)
+INSERT INTO news (head,mintext,news,category_id,link)
 VALUES ('Ёмобила','В Сколково изобрели новый телефон','...из наночастиц... наноразмеры... ищут...',100002,'www://skolkovo.ru'),
        ('Пандемия','Смертельная зараза на пороге','Китай чихал на весь мир, многии болеют...',100003,'www://medicina.ru'),
        ('Австралия','Сумчатые животные ','Коала объелась листьев эвкалипта и обогнала кенгуру',100004,'www://worldtravel.ru'),
