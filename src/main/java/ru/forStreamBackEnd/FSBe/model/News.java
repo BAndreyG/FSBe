@@ -2,6 +2,8 @@ package ru.forStreamBackEnd.FSBe.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
@@ -10,24 +12,22 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 @Entity(name = "news")
 public class News extends AbstractBaseEntity{
 
     @Column(name = "head",nullable = false)
     @NotBlank
     @Size(min = 2, max = 100)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String head;
 
     @Column(name = "mintext",nullable = false)
     @NotBlank
     @Size(min = 2, max = 200)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String mintext;
 
     @Column(name = "news",nullable = false)
     @NotBlank
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String news;
 
     @Column(name = "preview")
@@ -35,13 +35,11 @@ public class News extends AbstractBaseEntity{
 
     @Column(name = "createday", nullable = false, columnDefinition = "timestamp default now()")
     @NotNull
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private LocalDateTime createday = LocalDateTime.now();
 
     @Column(name = "link",nullable = false)
     @NotBlank
     @Size(min = 2, max = 100)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String link;
 
     @Column(name = "enabled", nullable = false, columnDefinition = "bool default true")

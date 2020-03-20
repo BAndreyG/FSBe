@@ -2,6 +2,7 @@ package ru.forStreamBackEnd.FSBe.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -19,6 +20,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 @Entity
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "password", name = "users_unique_email_idx")})
 public class User extends AbstractBaseEntity{
@@ -26,23 +28,19 @@ public class User extends AbstractBaseEntity{
     @Column(name = "surname",nullable = false)
     @NotBlank
     @Size(min = 2, max = 50)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String surname;
 
     @Column(name = "name",nullable = false)
     @NotBlank
     @Size(min = 2, max = 50)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String name;
 
     @Column(name = "patronymic")
     @Size(min = 2, max = 50)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String patronymic;
 
     @Column(name = "birthday", nullable = false, columnDefinition = "timestamp default now()")
     @NotNull
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private LocalDate birthday=LocalDate.now();
 
     @Column(name = "foto")
@@ -55,13 +53,11 @@ public class User extends AbstractBaseEntity{
 
     @Column(name = "registered", nullable = false, columnDefinition = "timestamp default now()")
     @NotNull
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private LocalDateTime registered = LocalDateTime.now();
 
     @Column(name = "password", nullable = false)
     @NotBlank
     @Size(min = 5, max = 100)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @Column(name = "enabled", nullable = false, columnDefinition = "bool default true")
@@ -77,7 +73,7 @@ public class User extends AbstractBaseEntity{
 
 //    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "user")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
 //    @JsonIgnore
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(fetch = FetchType.LAZY,mappedBy = "users")
     private List<Category> categories;
 
     public User() {

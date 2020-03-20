@@ -12,13 +12,13 @@ import java.util.List;
 public class NewsService {
 
     @Autowired
-    private NewsRepo newsRepo;
+    private NewsRepo repo;
 
-    public NewsService(NewsRepo newsRepo){this.newsRepo=newsRepo;}
+    public NewsService(NewsRepo repo){this.repo=repo;}
 
     public List<News> getAll(){
-        return newsRepo.findAll(Sort.by("createday"));
+        return repo.findAll(Sort.by("createday"));
     }
 
-    public News getId(int id){return newsRepo.findById(id);}
+    public News getId(int id){return repo.findById(id);}
 }

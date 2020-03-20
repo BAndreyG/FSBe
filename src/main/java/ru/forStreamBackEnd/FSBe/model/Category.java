@@ -1,7 +1,9 @@
 package ru.forStreamBackEnd.FSBe.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -9,13 +11,13 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 @Entity (name = "categorys")
 public class Category extends AbstractBaseEntity {
 
     @Column(name = "name",nullable = false)
     @NotBlank
     @Size(min = 2, max = 100)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String name;
 
 /*    @OneToMany(fetch = FetchType.LAZY, mappedBy = "categorys")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
@@ -30,7 +32,7 @@ public class Category extends AbstractBaseEntity {
 
     @ManyToMany(cascade = { CascadeType.ALL })
 //    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "category")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
-//    @JsonIgnore
+    @JsonIgnore
     @JoinTable(
             name = "user_category",
             joinColumns = { @JoinColumn(name = "category_id") },
@@ -42,9 +44,10 @@ public class Category extends AbstractBaseEntity {
         this.newsList = newsList;
     }*/
 
-    public Category(Integer id, @NotBlank @Size(min = 2, max = 100) String name) {
+    public Category(Integer id, @NotBlank @Size(min = 2, max = 100) String name,List<User> users) {
         super(id);
         this.name = name;
+        this.users=users;
     }
     /*public Category(Integer id, @NotBlank @Size(min = 2, max = 100) String name, List<News> newsList) {
         super(id);
