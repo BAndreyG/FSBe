@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.forStreamBackEnd.FSBe.model.News;
@@ -22,9 +23,10 @@ public class NewsController {
     @Autowired
     private NewsService newsService;
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<News> getAll(){
 //        int userId = SecurityUtil.authUserId();
-//        log.info("getAll for user {}", userId);
+        log.info("getAll news for user {}"); //userId
         return newsService.getAll();
     }
 
