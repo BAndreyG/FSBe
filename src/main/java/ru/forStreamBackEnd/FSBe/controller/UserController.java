@@ -28,4 +28,10 @@ public class UserController {
         log.info("getAll news for user {}"); //userId
         return service.getAll();
     }
+
+    @GetMapping("/test")
+    public String test(){return "test";}
+
+    @GetMapping("/index")
+    public String getIndex(){return "index";}
 }
