@@ -14,4 +14,15 @@ public class RootController {
         model.put("this_time",new Date().toString());
         return "gettime";
     }
+
+    @GetMapping("/profile")
+    public String getProf(){
+        return "profile";
+    }
+
+    @GetMapping("/news")
+    public String getNews(){
+        System.out.println("rootConroller news");
+        return "news";
+    }
 }

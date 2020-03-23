@@ -29,9 +29,4 @@ public class UserController {
         return service.getAll();
     }
 
-    @GetMapping("/test")
-    public String test(){return "test";}
-
-    @GetMapping("/index")
-    public String getIndex(){return "index";}
 }
