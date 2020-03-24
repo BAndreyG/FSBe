@@ -39,6 +39,7 @@ public class Category extends AbstractBaseEntity {
             inverseJoinColumns = { @JoinColumn(name = "user_id") }
     )
     List<User> users;
+
     /*public Category(@NotBlank @Size(min = 2, max = 100) String name, List<News> newsList) {
         this.name = name;
         this.newsList = newsList;

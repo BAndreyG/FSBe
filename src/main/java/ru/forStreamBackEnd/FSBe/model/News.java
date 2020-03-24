@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -45,9 +44,15 @@ public class News extends AbstractBaseEntity{
     @Column(name = "enabled", nullable = false, columnDefinition = "bool default true")
     private boolean enabled = true;
 
+//    @JoinTable(name = "categorys", joinColumns = @JoinColumn(name = "category_id"))
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+//    @Column(name = "name")
+    private Category category;
+
     public News(){}
 
-    public News(@NotBlank @Size(min = 2, max = 100) String head, @NotBlank @Size(min = 2, max = 200) String mintext, @NotBlank String news, String preview, @NotNull LocalDateTime createday, @NotBlank @Size(min = 2, max = 100) String link, boolean enabled) {
+    public News(@NotBlank @Size(min = 2, max = 100) String head, @NotBlank @Size(min = 2, max = 200) String mintext, @NotBlank String news, String preview, @NotNull LocalDateTime createday, @NotBlank @Size(min = 2, max = 100) String link, boolean enabled,Category category) {
         this.head = head;
         this.mintext = mintext;
         this.news = news;
@@ -55,9 +60,10 @@ public class News extends AbstractBaseEntity{
         this.createday = createday;
         this.link = link;
         this.enabled = enabled;
+        this.category=category;
     }
 
-    public News(Integer id, @NotBlank @Size(min = 2, max = 100) String head, @NotBlank @Size(min = 2, max = 200) String mintext, @NotBlank String news, String preview, @NotNull LocalDateTime createday, @NotBlank @Size(min = 2, max = 100) String link, boolean enabled) {
+    public News(Integer id, @NotBlank @Size(min = 2, max = 100) String head, @NotBlank @Size(min = 2, max = 200) String mintext, @NotBlank String news, String preview, @NotNull LocalDateTime createday, @NotBlank @Size(min = 2, max = 100) String link, boolean enabled,Category category) {
         super(id);
         this.head = head;
         this.mintext = mintext;
@@ -66,5 +72,6 @@ public class News extends AbstractBaseEntity{
         this.createday = createday;
         this.link = link;
         this.enabled = enabled;
+        this.category=category;
     }
 }
