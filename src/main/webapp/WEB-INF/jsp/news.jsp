@@ -6,10 +6,17 @@
 <jsp:include page="fragments/headTag.jsp"/>
 <head>
     <title>News</title>
+    <link href="/resources/css/datatables.css" rel="stylesheet">
+    <link rel="shortcut icon" href="resources/images/sort_both.png">
+    <link rel="shortcut icon" href="resources/images/sort_desc.png">
 </head>
 <body>
+
+<script src="/resources/js/datatables.js" type="text/javascript"></script>
+<%--<script src="/resources/js/jquery.dataTables.js" type="text/javascript"></script>--%>
+<script src="/resources/js/dtable.js" type="text/javascript"></script>
 <div class="jumbotron">
-    <table border="3">
+    <table border="3"  id="table">
         <thead>
         <tr>
             <th>Заголовок</th>

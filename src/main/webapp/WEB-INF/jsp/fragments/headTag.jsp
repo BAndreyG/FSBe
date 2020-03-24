@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="resources/css/style.css">
     <link rel="stylesheet" href="resources/css/bootstrap.min.css">
     <link rel="shortcut icon" href="resources/images/icons-news.png">
+    <link rel="stylesheet" href="/resources/css/style.css" >
 
     <script type="text/javascript" src="resources/js/jquery.js"></script>
     <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>

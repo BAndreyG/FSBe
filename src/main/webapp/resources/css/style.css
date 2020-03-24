@@ -15,3 +15,6 @@
     background-color: #c6fbc2;
     border: 1px solid #9feba6;
 }
+td{
+    vertical-align: inherit;
+}
