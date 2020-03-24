@@ -23,10 +23,10 @@ public class RootController {
         return "gettime";
     }
 
-    @GetMapping("/profile")
+    /*@GetMapping("/profile")
     public String getProf(){
         return "profile";
-    }
+    }*/
 
     @GetMapping("/news")
     public String getNews(Model model){

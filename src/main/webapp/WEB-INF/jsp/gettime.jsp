@@ -6,7 +6,6 @@
 <jsp:include page="fragments/headTag.jsp"/>
 <head>
 
-
 </head>
 
 <body>

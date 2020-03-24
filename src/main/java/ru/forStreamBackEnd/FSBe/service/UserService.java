@@ -15,4 +15,14 @@ public class UserService {
     private UserRepo repo;
 
     public List<User> getAll(){return repo.findAll(Sort.by("surname"));}
+
+    public void del(int id){
+        if (repo.existsById(id))repo.deleteById(id);
+    }
+
+    public User getId(int id) {
+        return repo.getById(id);
+    }
+
+
 }

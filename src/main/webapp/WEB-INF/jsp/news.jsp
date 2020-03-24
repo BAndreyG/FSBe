@@ -1,19 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<html xmlns:th="http://www.thymeleaf.org">--%>
 <html lang="ru">
 <jsp:include page="fragments/headTag.jsp"/>
 <head>
     <title>News</title>
     <link href="/resources/css/datatables.css" rel="stylesheet">
+    <link rel="shortcut icon" href="resources/images/icons-news.png">
     <link rel="shortcut icon" href="resources/images/sort_both.png">
     <link rel="shortcut icon" href="resources/images/sort_desc.png">
 </head>
 <body>
 
 <script src="/resources/js/datatables.js" type="text/javascript"></script>
-<%--<script src="/resources/js/jquery.dataTables.js" type="text/javascript"></script>--%>
 <script src="/resources/js/dtable.js" type="text/javascript"></script>
 <div class="jumbotron">
     <table border="3"  id="table">
@@ -29,7 +28,6 @@
         </tr>
         </thead>
         <tbody>
-        <%--        c:forEach ="news:${news}"--%>
         <c:forEach items="${newsList}" var="news">
             <tr>
                 <td>${news.head}</td>
