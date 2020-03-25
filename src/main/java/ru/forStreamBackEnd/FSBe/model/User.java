@@ -1,5 +1,6 @@
 package ru.forStreamBackEnd.FSBe.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -72,7 +73,7 @@ public class User extends AbstractBaseEntity{
     private Set<Role> roles;
 
 //    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "user")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
-//    @JsonIgnore
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY,mappedBy = "users")
     private List<Category> categories;
 

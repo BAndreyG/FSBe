@@ -2,31 +2,55 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ru">
-<%--<jsp:include page="fragments/headTag.jsp"/>--%>
+<%!
+    String data ="" ;
+%>
+<jsp:include page="fragments/headTag.jsp"/>
 <head>
     <title>You profile</title>
     <script type="text/javascript" src="resources/js/jquery.js"></script>
-    <script src="/resources/js/dtable.js" type="text/javascript"></script>
+<%--    <script src="/resources/js/dtable.js" type="text/javascript"></script>--%>
 </head>
 <body>
 
 
-<div>
-    <h1>You personal data</h1>
-    <section class="p-2">
-        <p>${user.surname}</p>
-        <p>${user.name}</p>
-        <p>${user.patronymic}</p>
-        <p>${user.birthday}</p>
-        <p>${user.gender}</p>
-        <p>${user.registered}</p>
-    </section>
-    <section class="p-3 figure-img">
-        <p>${user.foto}</p>
+<div class="jumbotron">
+    <h1>You profile</h1>
+    <div class="row">
+        <div class="row no-gutters">
+            <div class="col-12">
+        <ul class="list-group">
+            <li class="list-group-item"><input type="text" value="${user.surname}"></li>
+            <li class="list-group-item"><input type="text" value="${user.name}"></li>
+            <li class="list-group-item"><input type="text" value="${user.patronymic}"></li>
+            <li class="list-group-item"><input type="text" value="${user.birthday}"></li>
+            <li class="list-group-item"><input type="text" value="${user.gender}"></li>
+            <li class="list-group-item"><input type="text" value="${user.registered}"></li>
+        <c:forEach items="${user.categories}" var="category">
+            ${category.name}
+<%--        <%=data+=%>" "    <c: let=let+"${category.name}"></c:>--%>
+        </c:forEach>
+<%--            <li class="list-group-item"><input type="text" value="<%=data%>"></li>--%>
+        </ul>
+            </div>
+            <div class="col-6 col-md-4">
+                <p class="border-5">${user.foto}</p>
+            </div>
+        </div>
+    </div>
+<%--TODO https://bootstrap-4.ru/articles/cheatsheet/#no-gutters http://khpi-iip.mipk.kharkiv.edu/library/j2ee/tutoral/doc/JSPIntro7.html
+закинуть фотку в БД сделать вывод фотки, разобраться с  выводом катерогий
+--%>
+    <section>
+        <button>Сохранить</button>
+        <button>Удалить</button>
+        </br>
+
+
     </section>
 
 </div>
-
+<jsp:include page="fragments/footer.jsp"/>
 </body>
 </html>
 

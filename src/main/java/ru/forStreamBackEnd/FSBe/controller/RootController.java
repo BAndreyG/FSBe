@@ -28,10 +28,8 @@ public class RootController {
         return "profile";
     }*/
 
-    @GetMapping("/news")
+    @GetMapping()
     public String getNews(Model model){
-        List<News> news=service.getAll();
-        model.addAttribute("newsList",news);
-        return "news";
+        return "login";
     }
 }

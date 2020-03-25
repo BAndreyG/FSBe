@@ -44,8 +44,9 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<User> createOrUpdate(@RequestBody User user){
-        if (user==null) User created=service.create(user);
-        else User created=service.update(user);
+        User created=new User();
+        if (user==null) created=service.create(user);
+        else created=service.update(user);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
                 .buildAndExpand(created.getId()).toUri();

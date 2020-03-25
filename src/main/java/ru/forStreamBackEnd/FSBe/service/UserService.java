@@ -25,4 +25,11 @@ public class UserService {
     }
 
 
+    public User create(User user) {
+        return null;
+    }
+
+    public User update(User user) {
+        return null;
+    }
 }
