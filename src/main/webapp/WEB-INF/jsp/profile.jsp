@@ -45,6 +45,12 @@
         <button>Сохранить</button>
         <button>Удалить</button>
         </br>
+<%--        // TODO доделать--%>
+        <form action="formdata" method="post" name="form1">
+            <p><strong>Загрузите фотку</strong>:</p>
+            <p><input type="file" name="vid" accept="image/jpg"></p>
+            <p><input type="submit" value="Отправить"></p>
+        </form>
 
 
     </section>
