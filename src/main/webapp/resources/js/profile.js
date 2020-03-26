@@ -1,0 +1,7 @@
+$(function() {
+    $('.foto').click(function () {
+
+    });
+
+
+});
