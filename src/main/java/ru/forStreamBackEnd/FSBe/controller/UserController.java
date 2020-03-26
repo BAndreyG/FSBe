@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.forStreamBackEnd.FSBe.model.User;
 import ru.forStreamBackEnd.FSBe.service.UserService;
+import ru.forStreamBackEnd.FSBe.to.UserTo;
 
 import java.net.URI;
 import java.util.List;
@@ -44,10 +45,10 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createOrUpdate(@RequestBody User user){
+    public ResponseEntity<User> createOrUpdate(@RequestBody UserTo userTo){
         User created=new User();
-        if (user==null) created=service.create(user);
-        else created=service.update(user);
+        if (userTo.id()==0) created=service.create(userTo);
+        else created=service.update(userTo);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
                 .buildAndExpand(created.getId()).toUri();

@@ -13,27 +13,32 @@
 <div class="jumbotron">
     <h1>Ваш профиль</h1>
     <br>
-    <input id="userid" value="${user.id}" hidden="hidden"></input>
+
     <div class="container">
         <div class="row no-gutters">
             <div class="col-12 col-sm-6 col-md-8">
         <ul class="list-group">
-            <input class="list-group-item" type="text" value="${user.surname}">
-            <input class="list-group-item" type="text" value="${user.name}">
-            <input class="list-group-item" type="text" value="${user.patronymic}">
-            <input class="list-group-item" type="text" value="${user.birthday}">
-            <input class="list-group-item" type="text" value="${user.gender}">
-            <input class="list-group-item" type="text" value="${user.registered}">
+            <input class="list-group-item" id="userid" value="${user.id}" hidden="hidden"></input>
+            <input class="list-group-item" type="text" id="surname" value="${user.surname}">
+            <input class="list-group-item" type="text" id ="name" value="${user.name}">
+            <input class="list-group-item" type="text" id ="patronymic" value="${user.patronymic}">
+            <input class="list-group-item" type="date" id ="birthday" value="${user.birthday}">
+            <input class="list-group-item" type="text" id ="gender" value="${user.gender}">
+            <input class="list-group-item" readonly type="text" id ="registered" value="${user.registered}">
+            <input class="list-group-item" type="text" id ="password" value="${user.password}">
         <c:forEach items="${user.categories}" var="category">
-            ${category.name}
+            <p class="catName" hidden >${category.name}</p>
+            <p class="catId" hidden>"${category.id}"</p>
 <%--        <%=data+=%>" "    <c: let=let+"${category.name}"></c:>--%>
         </c:forEach>
+            <input class="list-group-item" type="text" id="category">
         </ul>
             </div>
             <div class="col-6 col-md-4">
                 <img src="/resources/images/shrek.jpg" alt="Здесь может быть Ваше фото">
 
-                <p class="border-5">${user.foto}</p>
+<%--                <p class="border-5">${user.foto}</p>--%>
+                <input class="list-group-item" type="text" id ="foto" value="${user.foto}">
 
                 <form action="" method="post" name="foto">
                     <p><strong>Загрузите фотку</strong>:</p>

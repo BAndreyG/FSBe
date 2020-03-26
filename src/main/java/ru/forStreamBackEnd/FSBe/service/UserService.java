@@ -5,6 +5,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.forStreamBackEnd.FSBe.model.User;
 import ru.forStreamBackEnd.FSBe.repository.UserRepo;
+import ru.forStreamBackEnd.FSBe.to.UserTo;
+import ru.forStreamBackEnd.FSBe.util.UserUtil;
 
 import java.util.List;
 
@@ -25,11 +27,12 @@ public class UserService {
     }
 
 
-    public User create(User user) {
+    public User create(UserTo userTo) {
         return null;
     }
 
-    public User update(User user) {
-        return null;
+    public User update(UserTo userTo) {
+        User old=getId(userTo.id());
+        return repo.save(UserUtil.convertUser(userTo,old));
     }
 }

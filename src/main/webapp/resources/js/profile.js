@@ -1,6 +1,11 @@
 $(function() {
-    var url='http://127.0.0.1:8080/profile/';
-    // let url=$(location).attr('href');
+    let catName='';
+    $.each($('.catName'),function () {
+        catName+=this.innerText+"; ";
+    });
+  catName=catName.substr(0,catName.length-1);
+    $('#category').val(catName);
+    let url=$(location).attr('href')+'/';
     $('.foto').click(function () {
 
     });
@@ -13,7 +18,10 @@ $(function() {
 
     $('#save').click(function () {
         let profileObj=new Object();
-
+        let list=$('.list-group-item');
+        $.each(list,function () {
+            profileObj[this.id]=this.value;
+        })
         post(url,profileObj);
     });
 
