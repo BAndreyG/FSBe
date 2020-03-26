@@ -6,4 +6,5 @@ import ru.forStreamBackEnd.FSBe.model.Category;
 
 @Repository
 public interface CategoryRepo extends JpaRepository<Category,Integer> {
+    Category findByName(String name);
 }

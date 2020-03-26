@@ -14,6 +14,8 @@ public class UserUtil {
         user.setFoto(userTo.getFoto());
         user.setGender(userTo.getGender());
         user.setPassword(userTo.getPassword());
+
+//        user.setCategories();
         return user;
     }
 }
