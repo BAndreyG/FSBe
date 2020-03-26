@@ -54,7 +54,7 @@ CREATE TABLE user_category
 (
     user_id     INTEGER NOT NULL,
     category_id INTEGER NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES USERS (id),
-    FOREIGN KEY (category_id) REFERENCES categorys (id),
+    FOREIGN KEY (user_id) REFERENCES USERS (id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES categorys (id) ON DELETE CASCADE,
     CONSTRAINT user_category_idx UNIQUE (user_id, category_id)
 );

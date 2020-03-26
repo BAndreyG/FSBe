@@ -8,15 +8,12 @@
 <jsp:include page="fragments/headTag.jsp"/>
 <head>
     <title>Ваш профиль</title>
-    <script type="text/javascript" src="resources/js/jquery.js"></script>
-<%--    <script src="/resources/js/dtable.js" type="text/javascript"></script>--%>
 </head>
 <body>
-
-
 <div class="jumbotron">
     <h1>Ваш профиль</h1>
     <br>
+    <input id="userid" value="${user.id}" hidden="hidden"></input>
     <div class="container">
         <div class="row no-gutters">
             <div class="col-12 col-sm-6 col-md-8">
@@ -37,9 +34,12 @@
                 <img src="/resources/images/shrek.jpg" alt="Здесь может быть Ваше фото">
 
                 <p class="border-5">${user.foto}</p>
-                <form action="formdata" method="post" name="form1">
+
+                <form action="" method="post" name="foto">
                     <p><strong>Загрузите фотку</strong>:</p>
-                    <p><input type="file" name="vid" accept="image/jpg"></p>
+                    <p><input type="file" name="vid" accept="image/*"></p>
+<%--                    <p><input type="image" src="/resources/images/shrek.jpg"></p>--%>
+
 <%--                    <p><input type="submit" value="Отправить"></p>--%>
                 </form>
 
@@ -52,11 +52,12 @@
 закинуть фотку в БД сделать вывод фотки, разобраться с  выводом катерогий
 --%>
     <section>
-        <button>Сохранить</button>
-        <button>Удалить</button>
+        <button id="save">Сохранить</button>
+        <button id="delete">Удалить</button>
     </section>
 </div>
 <jsp:include page="fragments/footer.jsp"/>
+<script type="text/javascript" src="resources/js/profile.js"></script>
 </body>
 </html>
 

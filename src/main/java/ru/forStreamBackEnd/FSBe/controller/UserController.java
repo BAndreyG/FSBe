@@ -28,9 +28,10 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public String del(@PathVariable int id){
+    public void del(@PathVariable int id){
+        log.info("delete id"+id);
         service.del(id);
-        return "redirect:login";
+//        return "redirect:login";
     }
 
     @GetMapping
