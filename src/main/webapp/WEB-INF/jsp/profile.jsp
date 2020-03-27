@@ -18,7 +18,7 @@
         <div class="row no-gutters">
             <div class="col-12 col-sm-6 col-md-8">
         <ul class="list-group">
-            <input class="list-group-item" id="userid" value="${user.id}" hidden="hidden"></input>
+            <input class="list-group-item" id="id" value="${user.id}" hidden="hidden"></input>
             <input class="list-group-item" type="text" id="surname" value="${user.surname}">
             <input class="list-group-item" type="text" id ="name" value="${user.name}">
             <input class="list-group-item" type="text" id ="patronymic" value="${user.patronymic}">
@@ -29,20 +29,23 @@
         <c:forEach items="${user.categories}" var="category">
             <p class="catName" hidden >${category.name}</p>
             <p class="catId" hidden>"${category.id}"</p>
-<%--        <%=data+=%>" "    <c: let=let+"${category.name}"></c:>--%>
         </c:forEach>
             <input class="list-group-item" type="text" id="category">
         </ul>
             </div>
             <div class="col-6 col-md-4">
-                <img src="/resources/images/shrek.jpg" alt="Здесь может быть Ваше фото">
+                <img  id="foto" src="" alt="Здесь может быть Ваше фото">
+<%--                /resources/images/shrek.jpg--%>
 
 <%--                <p class="border-5">${user.foto}</p>--%>
-                <input class="list-group-item" type="text" id ="foto" value="${user.foto}">
+                <input id ="fotoData" class="list-group-item" type="text"  value="${user.foto}" hidden="hidden">
 
                 <form action="" method="post" name="foto">
-                    <p><strong>Загрузите фотку</strong>:</p>
-                    <p><input type="file" name="vid" accept="image/*"></p>
+                    <p><strong>Загрузите фото</strong>:</p>
+<%--                    <p><input type="file" name="vid" accept="image/*" id="inp"></p>--%>
+                    <input id="inp" type='file'>
+<%--                    <p id="b64"></p>--%>
+<%--                    <img id="img" height="150">--%>
 <%--                    <p><input type="image" src="/resources/images/shrek.jpg"></p>--%>
 
 <%--                    <p><input type="submit" value="Отправить"></p>--%>
