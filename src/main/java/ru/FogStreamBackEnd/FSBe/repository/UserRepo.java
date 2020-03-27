@@ -8,4 +8,5 @@ import ru.FogStreamBackEnd.FSBe.model.User;
 public interface UserRepo extends JpaRepository<User,Integer> {
     User getById(int id);
 
+    User getByName(String name);
 }

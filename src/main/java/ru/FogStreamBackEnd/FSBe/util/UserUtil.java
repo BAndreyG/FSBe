@@ -26,7 +26,8 @@ public class UserUtil {
         userTo.setName(user.getName());
         userTo.setPatronymic(user.getPatronymic());
         userTo.setBirthday(user.getBirthday());
-        userTo.setFoto(new String(Base64.getEncoder().encode(user.getFoto())));
+        if (user.getFoto()!=null)userTo.setFoto(new String(Base64.getEncoder().encode(user.getFoto())));
+        else userTo.setFoto(null);
         userTo.setGender(user.getGender());
         userTo.setPassword(user.getPassword());
         userTo.setCategories(user.getCategories());

@@ -4,8 +4,8 @@ DELETE FROM news;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
 INSERT INTO users (surname,name,patronymic,gender, password) VALUES
-  ('Васёв','Вася','Васильевич','m', 'user'),
-  ('Петров','Петя','Петрович','m', 'admin');
+  ('Васёв','user','Васильевич','m', '$2a$10$8E9T8IrsfJllvBHDhsFR4Ovv6I6NsjKqbNss7LvTziVZwAvMKpuSW'),
+  ('Петров','admin','Петрович','m', '$2a$10$DIweDRnnDQ43mtxsgbwfq.WjhOpYRZ39BKGBc8zso5mpEhATV.jZe');
 
 INSERT INTO user_roles (role, user_id) VALUES
   ('ROLE_USER', 100000),
