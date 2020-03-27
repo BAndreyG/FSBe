@@ -56,9 +56,7 @@
         <br>
         <br>
     </div>
-<%--TODO https://bootstrap-4.ru/articles/cheatsheet/#no-gutters http://khpi-iip.mipk.kharkiv.edu/library/j2ee/tutoral/doc/JSPIntro7.html
-закинуть фотку в БД сделать вывод фотки, разобраться с  выводом катерогий
---%>
+
     <section>
         <button id="save">Сохранить</button>
         <button id="delete">Удалить</button>
