@@ -13,7 +13,8 @@ public class UserUtil {
         user.setName(userTo.getName());
         user.setPatronymic(userTo.getPatronymic());
         user.setBirthday(userTo.getBirthday());
-        user.setFoto(javax.xml.bind.DatatypeConverter.parseBase64Binary(userTo.getFoto().split(",")[1]));
+        if (userTo.getFoto()!=null)user.setFoto(javax.xml.bind.DatatypeConverter.parseBase64Binary(userTo.getFoto().split(",")[1]));
+        else user.setFoto(null);
         user.setGender(userTo.getGender());
         user.setPassword(userTo.getPassword());
 //        user.setCategories();
