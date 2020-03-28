@@ -35,22 +35,11 @@
             </div>
             <div class="col-6 col-md-4">
                 <img  id="foto" src="" alt="Здесь может быть Ваше фото">
-<%--                /resources/images/shrek.jpg--%>
-
-<%--                <p class="border-5">${user.foto}</p>--%>
                 <input id ="fotoData" class="list-group-item" type="text"  value="${user.foto}" hidden="hidden">
-
                 <form action="" method="post" name="foto">
                     <p><strong>Загрузите фото</strong>:</p>
-<%--                    <p><input type="file" name="vid" accept="image/*" id="inp"></p>--%>
                     <input id="inp" type='file'>
-<%--                    <p id="b64"></p>--%>
-<%--                    <img id="img" height="150">--%>
-<%--                    <p><input type="image" src="/resources/images/shrek.jpg"></p>--%>
-
-<%--                    <p><input type="submit" value="Отправить"></p>--%>
                 </form>
-
             </div>
         </div>
         <br>

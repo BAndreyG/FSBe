@@ -5,6 +5,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.FogStreamBackEnd.FSBe.AuthorizedUser;
 import ru.FogStreamBackEnd.FSBe.model.Category;
@@ -26,6 +27,9 @@ public class UserService implements UserDetailsService {
     @Autowired
     private CategoryRepo categoryRepo;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     public List<User> getAll(){return repo.findAll(Sort.by("surname"));}
 
     public void del(int id){
@@ -38,6 +42,7 @@ public class UserService implements UserDetailsService {
 
 
     public User create(UserTo userTo) {
+//        user.setPassword(passwordEncoder.encode(registration.getPassword()));
         return null;
     }
 
@@ -48,6 +53,7 @@ public class UserService implements UserDetailsService {
         for (String s:catList) {
             list.add(categoryRepo.findByName(s));
         }
+//        user.setPassword(passwordEncoder.encode(registration.getPassword()));
 //        Arrays.stream(catList).forEach(list.add(categoryRepo.findByName()));
         return repo.save(UserUtil.convertUser(userTo,old));
     }

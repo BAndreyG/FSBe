@@ -41,7 +41,7 @@ public class UserController {
         model.addAttribute("user", UserUtil.convertUserTo(service.getId(id),new UserTo()));
         return "profile";
     }
-//TODO in convert add roles
+
     @PostMapping
     public ResponseEntity<User> createOrUpdate(@RequestBody UserTo userTo){
         User created=new User();

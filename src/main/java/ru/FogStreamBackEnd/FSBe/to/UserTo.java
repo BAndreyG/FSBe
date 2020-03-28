@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
+import static ru.FogStreamBackEnd.FSBe.model.Role.ROLE_USER;
+
 @Data
 public class UserTo extends BaseTo {
 
@@ -27,7 +29,7 @@ public class UserTo extends BaseTo {
 
     public UserTo(){}
 
-    public UserTo(String surname, String name, String patronymic, LocalDate birthday, String foto, String gender, LocalDateTime registered, String password, boolean enabled, Set<Role> roles, String category) {
+    public UserTo(String surname, String name, String patronymic, LocalDate birthday, String foto, String gender, LocalDateTime registered, String password, boolean enabled, String category) {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
@@ -37,7 +39,7 @@ public class UserTo extends BaseTo {
         this.registered = registered;
         this.password = password;
         this.enabled = enabled;
-        this.roles = roles;
+        this.roles.add(ROLE_USER);
         this.category = category;
     }
 
