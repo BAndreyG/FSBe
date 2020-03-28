@@ -17,7 +17,7 @@
             </div>
             <div class="col-8">
                 <div class="d-flex justify-content-end">
-                    <a href="/">
+                    <a href="/logout">
                         <button type="button" class="btn btn-danger">Выйти</button>
                     </a>
                 </div>

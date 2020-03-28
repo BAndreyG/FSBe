@@ -2,9 +2,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ru">
-<%!
-    String data ="" ;
-%>
 <jsp:include page="fragments/headTag.jsp"/>
 <head>
     <title>Ваш профиль</title>
@@ -13,7 +10,6 @@
 <div class="jumbotron">
     <h1>Ваш профиль</h1>
     <br>
-
     <div class="container">
         <div class="row no-gutters">
             <div class="col-12 col-sm-6 col-md-8">
@@ -43,16 +39,18 @@
             </div>
         </div>
         <br>
-        <br>
     </div>
 
     <section>
+        <div class="g-recaptcha" data-sitekey="6LfhaeQUAAAAAJSe1NiWAHOaXROz9CqdgMVSPEnq"></div>
         <button id="save">Сохранить</button>
         <button id="delete">Удалить</button>
     </section>
+
 </div>
 <jsp:include page="fragments/footer.jsp"/>
 <script type="text/javascript" src="resources/js/profile.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 </body>
 </html>
 

@@ -1,5 +1,6 @@
 $(function () {
     let catName = '';
+    files=null;
     $.each($('.catName'), function () {
         catName += this.innerText + "; ";
     });

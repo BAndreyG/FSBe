@@ -15,42 +15,56 @@ import ru.FogStreamBackEnd.FSBe.service.UserService;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true)
-/*@EnableGlobalMethodSecurity(
-        prePostEnabled = true)*/
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserService service;
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder managerBuilder) throws Exception {
-        managerBuilder.userDetailsService(service);
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(service).passwordEncoder(passwordEncoder());
     }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
     }
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.csrf().disable()
+        http.csrf().disable();
+        http.authorizeRequests().antMatchers("/", "/login", "/logout","/registration/**","/gettime","/resources/**","/WEB-INF/**").permitAll();
+        http.authorizeRequests().antMatchers("/profile","/news").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
+
+        http.authorizeRequests().and().formLogin()//
+                // Submit URL of login page.
+                .loginProcessingUrl("/j_spring_security_check") // Submit URL
+                .loginPage("/login")//
+                .defaultSuccessUrl("/news")//
+                .failureUrl("/login?error=true")//
+                .usernameParameter("username")//
+                .passwordParameter("password")
+                // Config for Logout Page
+                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login");
+
+        /*http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/registration/**","/gettime").permitAll()
-                .antMatchers("/resources/**","/WEB-INF/**","/news").permitAll()
+                .antMatchers("/resources/**","/WEB-INF/**").permitAll()
 //                .antMatchers("/profile").hasAnyRole("ADMIN")
                 .antMatchers("/profile/**","/news").hasAnyRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .failureUrl("/login?error")
                 .permitAll()
                 .and()
                 .logout()
                 .permitAll();
                 //.and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
-    }
-}
+    }*/
+}}

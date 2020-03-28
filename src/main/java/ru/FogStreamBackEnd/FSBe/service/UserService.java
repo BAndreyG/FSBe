@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 import ru.FogStreamBackEnd.FSBe.AuthorizedUser;
 import ru.FogStreamBackEnd.FSBe.model.Category;
 import ru.FogStreamBackEnd.FSBe.model.User;
@@ -42,8 +44,11 @@ public class UserService implements UserDetailsService {
 
 
     public User create(UserTo userTo) {
+        Assert.notNull(userTo, "user must not be null");
+        User user=UserUtil.convertUser(userTo,new User());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return repo.save(user);
 //        user.setPassword(passwordEncoder.encode(registration.getPassword()));
-        return null;
     }
 
     public User update(UserTo userTo) {
@@ -59,11 +64,14 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = repo.getByName(s);
         if (user == null) {
+            System.out.println("User not found! " + s);
             throw new UsernameNotFoundException("User " + s + " is not found");
         }
         return new AuthorizedUser(user);
     }
+
 }
