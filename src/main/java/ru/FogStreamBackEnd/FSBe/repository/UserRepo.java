@@ -5,7 +5,8 @@ import org.springframework.stereotype.Repository;
 import ru.FogStreamBackEnd.FSBe.model.User;
 
 @Repository
-public interface UserRepo extends JpaRepository<User,Integer> {
+public interface UserRepo extends JpaRepository<User, Integer> {
+
     User getById(int id);
 
     User getByName(String name);

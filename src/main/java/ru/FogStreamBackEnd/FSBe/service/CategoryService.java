@@ -14,7 +14,11 @@ public class CategoryService {
     @Autowired
     private CategoryRepo repo;
 
-    public CategoryService (CategoryRepo repo){this.repo=repo;}
+    public CategoryService(CategoryRepo repo) {
+        this.repo = repo;
+    }
 
-    public List<Category> getAll(){return repo.findAll(Sort.by("name"));}
+    public List<Category> getAll() {
+        return repo.findAll(Sort.by("name"));
+    }
 }

@@ -8,20 +8,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.FogStreamBackEnd.FSBe.AuthorizedUser;
-import ru.FogStreamBackEnd.FSBe.View;
-import ru.FogStreamBackEnd.FSBe.model.User;
-import ru.FogStreamBackEnd.FSBe.service.NewsService;
 import ru.FogStreamBackEnd.FSBe.service.UserService;
 import ru.FogStreamBackEnd.FSBe.to.UserTo;
 import ru.FogStreamBackEnd.FSBe.util.UserUtil;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import java.net.URI;
 import java.security.Principal;
 import java.util.Date;
@@ -37,38 +32,39 @@ public class RootController {
 
     @GetMapping("/gettime")
     public String list(Map<String, Object> model) {
-        model.put("this_time",new Date().toString()+" зщш");
+        model.put("this_time", new Date().toString() + " зщш");
         return "gettime";
     }
 
     @GetMapping("/registration")
-    public String showRegForm(Model model){
+    public String showRegForm(Model model) {
         log.info("registration new user");
         model.addAttribute("user", new UserTo());
         return "profile";
     }
 
     @PostMapping(value = "/registration/", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserTo> create( @RequestBody UserTo userTo){
+    public ResponseEntity<UserTo> create(@RequestBody UserTo userTo) {
         log.info("created new user");
-        UserTo created=service.create(userTo);
+        UserTo created = service.create(userTo);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/registration" + "/{id}")
                 .buildAndExpand(created.getId()).toUri();
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
 
-    @GetMapping(value = {"/login","/"})
-    public String LoginPage(){
+    @GetMapping(value = {"/login", "/"})
+    public String LoginPage() {
         return "login";
     }
 
-    @PostMapping(value = {"/login","/"})
-    public String getPr( Model model, Principal principal){
+    @PostMapping(value = {"/login", "/"})
+    public String getPr(Model model, Principal principal) {
         AuthorizedUser loginedUser = (AuthorizedUser) ((Authentication) principal).getPrincipal();
-        int id=loginedUser.getUser().id();
+        int id = loginedUser.getUser().id();
         log.info("get user id = ", id);
-        model.addAttribute("user", UserUtil.convertUserTo(service.getId(id),new UserTo()));
+        model.addAttribute("user", UserUtil.convertUserTo(service.getId(id), new UserTo()));
         return "profile";
+//        TODO актуален ли?
     }
 }

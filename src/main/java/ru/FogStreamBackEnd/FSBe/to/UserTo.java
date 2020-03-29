@@ -17,7 +17,7 @@ public class UserTo extends BaseTo {
     private String surname;
     private String name;
     private String patronymic;
-    private LocalDate birthday=LocalDate.now();
+    private LocalDate birthday = LocalDate.now();
     private String foto;
     private String gender;
     private LocalDateTime registered = LocalDateTime.now();
@@ -27,7 +27,8 @@ public class UserTo extends BaseTo {
     private String category;
     private List<Category> categories;
 
-    public UserTo(){}
+    public UserTo() {
+    }
 
     public UserTo(String surname, String name, String patronymic, LocalDate birthday, String foto, String gender, LocalDateTime registered, String password, boolean enabled, String category) {
         this.surname = surname;

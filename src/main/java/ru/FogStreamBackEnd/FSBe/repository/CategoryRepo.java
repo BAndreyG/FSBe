@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import ru.FogStreamBackEnd.FSBe.model.Category;
 
 @Repository
-public interface CategoryRepo extends JpaRepository<Category,Integer> {
+public interface CategoryRepo extends JpaRepository<Category, Integer> {
     Category findByName(String name);
 }

@@ -14,11 +14,15 @@ public class NewsService {
     @Autowired
     private NewsRepo repo;
 
-    public NewsService(NewsRepo repo){this.repo=repo;}
+    public NewsService(NewsRepo repo) {
+        this.repo = repo;
+    }
 
-    public List<News> getAll(){
+    public List<News> getAll() {
         return repo.findAll(Sort.by("createday"));
     }
 
-    public News getId(int id){return repo.findById(id);}
+    public News getId(int id) {
+        return repo.findById(id);
+    }
 }

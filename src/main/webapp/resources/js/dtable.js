@@ -1,6 +1,6 @@
-$(function() {
+$(function () {
     $('#table').DataTable({
-        'bStateSave':true,
-           "paging":         true,
-    } );
+        'bStateSave': true,
+        "paging": true,
+    });
 });

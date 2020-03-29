@@ -16,19 +16,17 @@ import java.util.List;
 @RequestMapping(value = CategoryController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class CategoryController {
 
-    static final String REST_URL ="/category";
+    static final String REST_URL = "/category";
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private CategoryService service;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Category> getAll(){
-//        int userId = SecurityUtil.authUserId();
-        log.info("getAll category for user {}"); //userId
+    public List<Category> getAll() {
+        log.info("getAll category for user {}");
         return service.getAll();
     }
-
 
 
 }

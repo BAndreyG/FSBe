@@ -1,31 +1,17 @@
-.error, .message {
-    padding: 10px;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-.error {
-    color: #a94442;
-    background-color: #f2dede;
-    border: 1px solid #ebccd1;
-}
-
-.message {
-    color: #2f9635;
-    background-color: #c6fbc2;
-    border: 1px solid #9feba6;
-}
-td{
+td {
     vertical-align: inherit;
 }
-.list-group-item{
-    padding-top:0rem;
+
+.list-group-item {
+    padding-top: 0rem;
     padding-bottom: 0rem;
 }
-.tex{
-    padding-top:0rem;
+
+.tex {
+    padding-top: 0rem;
     padding-bottom: 0rem;
 }
-.jumbotron{
-    margin-bottom:1rem;
+
+.jumbotron {
+    margin-bottom: 1rem;
 }
