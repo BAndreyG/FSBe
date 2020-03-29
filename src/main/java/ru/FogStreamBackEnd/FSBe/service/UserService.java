@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import ru.FogStreamBackEnd.FSBe.AuthorizedUser;
 import ru.FogStreamBackEnd.FSBe.model.Category;
+import ru.FogStreamBackEnd.FSBe.model.Role;
 import ru.FogStreamBackEnd.FSBe.model.User;
 import ru.FogStreamBackEnd.FSBe.repository.CategoryRepo;
 import ru.FogStreamBackEnd.FSBe.repository.UserRepo;
@@ -18,7 +19,10 @@ import ru.FogStreamBackEnd.FSBe.to.UserTo;
 import ru.FogStreamBackEnd.FSBe.util.UserUtil;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+
+import static ru.FogStreamBackEnd.FSBe.model.Role.ROLE_USER;
 
 @Service
 public class UserService implements UserDetailsService {

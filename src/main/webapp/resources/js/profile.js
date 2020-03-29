@@ -32,13 +32,15 @@ $(function () {
     document.getElementById("inp").addEventListener("change", readFile);
 
     $('#save').click(function () {
-        let profileObj = new Object();
-        let list = $('.list-group-item');
-        $.each(list, function () {
-            profileObj[this.id] = this.value;
-        });
-        profileObj['foto'] = files;
-        post(url, profileObj);
+        if (invalidetForm()===true){
+            let profileObj = new Object();
+            let list = $('.list-group-item');
+            $.each(list, function () {
+                profileObj[this.id] = this.value;
+            });
+            profileObj['foto'] = files;
+            post(url, profileObj);
+        }
     });
 
     $('#delete').click(function () {
@@ -74,4 +76,32 @@ $(function () {
         });
     };
 
+    let invalidetForm =function(){
+        let formParam=$('.list-group');
+        let alertFio="Нужнно ввести не менее 2-х символов в этом поле";
+        // alert($('#gender')[0].value.toLowerCase().indexOf("м")!=0&&$('#gender')[0].value.toLowerCase().indexOf("ж")!=0);
+        if ($('#surname')[0].value.length<2){
+            $('#surname').focus();
+            alert(alertFio);
+            return false;
+        } else if ($('#name')[0].value.length<2){
+            $('#name').focus();
+            alert(alertFio);
+            return false;
+        }else if ($('#patronymic')[0].value.length<2){
+            $('#patronymic').focus();
+            alert(alertFio);
+            return false;
+        }else if ($('#password')[0].value.length<3){
+            $('#password').focus();
+            alert("Пароль должен быть не менне 3 символов");
+            return false;
+        }else if ($('#gender')[0].value.toLowerCase().indexOf("м")!=0&&$('#gender')[0].value.toLowerCase().indexOf("ж")!=0){
+            $('#gender').focus();
+            alert("Если Вы мужского пола введите \"м\" ,если женского, то \"ж\" (без кавычек).");
+            return false;
+        }
+        // alert("Ошибка заполнения");
+        return true;
+    }
 });

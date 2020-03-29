@@ -42,7 +42,7 @@ public class UserController {
         AuthorizedUser loginedUser = (AuthorizedUser) ((Authentication) principal).getPrincipal();
 
         int id=loginedUser.getUser().id();
-        log.info("get user id = ", id);
+        log.info("get user id = "+ id);
         model.addAttribute("user", UserUtil.convertUserTo(service.getId(id),new UserTo()));
         return "profile";
     }

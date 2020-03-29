@@ -27,9 +27,7 @@
             <br>
             <br>
             <br>
-            <!--<if request has 'showRecaptcha' query param>-->
             <div class="g-recaptcha" data-sitekey="6LfhaeQUAAAAAJSe1NiWAHOaXROz9CqdgMVSPEnq"></div>
-            <!--</if>-->
             <br>
             <br>
             <br>

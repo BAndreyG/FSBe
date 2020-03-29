@@ -30,7 +30,7 @@ public class User extends AbstractBaseEntity{
     @Size(min = 2, max = 50)
     private String name;
 
-    @Column(name = "patronymic")
+    @Column(name = "patronymic",nullable = false)
     @Size(min = 2, max = 50)
     private String patronymic;
 

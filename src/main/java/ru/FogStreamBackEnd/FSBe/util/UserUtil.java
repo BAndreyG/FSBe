@@ -1,9 +1,14 @@
 package ru.FogStreamBackEnd.FSBe.util;
 
+import ru.FogStreamBackEnd.FSBe.model.Role;
 import ru.FogStreamBackEnd.FSBe.model.User;
 import ru.FogStreamBackEnd.FSBe.to.UserTo;
 
 import java.util.Base64;
+import java.util.HashSet;
+import java.util.Set;
+
+import static ru.FogStreamBackEnd.FSBe.model.Role.ROLE_USER;
 
 public class UserUtil {
     public UserUtil (){}
@@ -27,6 +32,11 @@ public class UserUtil {
         userTo.setName(user.getName());
         userTo.setPatronymic(user.getPatronymic());
         userTo.setBirthday(user.getBirthday());
+        if(userTo.getRoles()==null){
+            Set<Role> role=new HashSet<>();
+            role.add(ROLE_USER);
+            userTo.setRoles(role);
+        }
         if (user.getFoto()!=null)userTo.setFoto(new String(Base64.getEncoder().encode(user.getFoto())));
         else userTo.setFoto(null);
         userTo.setGender(user.getGender());

@@ -50,12 +50,8 @@ public class RootController {
         return "profile";
     }
 
-    //public ResponseEntity<User> createWithLocation(@Validated(View.Web.class) @RequestBody User meal) {}
-
     @PostMapping(value = "/registration/", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> create(@Valid UserTo userTo, BindingResult bindingResult){//, @RequestBody UserTo userTo
-        // TODO ВАЛИДАЦИЮ ДОДЕлатАЬ!!
-//        User created=new User();
+    public ResponseEntity<User> create( @RequestBody UserTo userTo){
         log.info("created new user");
         User created=service.create(userTo);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -65,17 +61,17 @@ public class RootController {
     }
 
     @GetMapping(value = {"/login","/"})
-    public String getNews(Model model){
+    public String LoginPage(){
         log.info("get login ");
         return "login";
     }
 
-    @PostMapping(value = {"/login","/"})
+   /* @PostMapping(value = {"/login","/"})
     public String getPr( Model model, Principal principal){
         AuthorizedUser loginedUser = (AuthorizedUser) ((Authentication) principal).getPrincipal();
         int id=loginedUser.getUser().id();
         log.info("get user id = ", id);
         model.addAttribute("user", UserUtil.convertUserTo(service.getId(id),new UserTo()));
         return "profile";
-    }
+    }*/
 }
