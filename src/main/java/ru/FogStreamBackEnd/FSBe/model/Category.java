@@ -39,4 +39,9 @@ public class Category extends AbstractBaseEntity {
         this.name = name;
         this.users = users;
     }
+
+    public Category(int categoryId, String name) {
+        this.id=categoryId;
+        this.name=name;
+    }
 }

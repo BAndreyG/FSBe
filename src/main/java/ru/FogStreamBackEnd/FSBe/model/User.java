@@ -75,6 +75,20 @@ public class User extends AbstractBaseEntity {
     public User() {
     }
 
+    public User(int userId, String surname, String name, String patronymic, LocalDate birthday, byte[] foto, String gender, LocalDateTime registered, String password, boolean enabled, Collection<Role> roles) {
+    this.id=userId;
+    this.surname=surname;
+    this.name=name;
+    this.patronymic=patronymic;
+    this.birthday=birthday;
+    this.foto=foto;
+    this.gender=gender;
+    this.registered=registered;
+    this.password=password;
+    this.enabled=enabled;
+    setRoles(roles);
+    }
+
     public void setRoles(Collection<Role> roles) {
         this.roles = CollectionUtils.isEmpty(roles) ? EnumSet.noneOf(Role.class) : EnumSet.copyOf(roles);
     }
