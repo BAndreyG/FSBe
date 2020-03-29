@@ -17,18 +17,9 @@ import java.util.List;
 public class NewsController {
 
     static final String REST_URL ="/news";
-    private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private NewsService service;
-
-/*    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<News> getAll(){
-//        int userId = SecurityUtil.authUserId();
-        log.info("getAll news for user {}"); //userId
-        return service.getAll();
-    }*/
-
 
     @GetMapping
     public String getNews(Model model){

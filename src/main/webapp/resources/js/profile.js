@@ -7,6 +7,10 @@ $(function () {
     catName = catName.substr(0, catName.length - 1);
     $('#category').val(catName);
 
+    let l=$('#password').value;
+
+    // $('#password').innerHTML("********");
+
     let url = $(location).attr('href') + '/';
 
     document.getElementById("foto").src ="data:image/jpg;base64," +$('#fotoData')[0].value;
@@ -77,9 +81,7 @@ $(function () {
     };
 
     let invalidetForm =function(){
-        let formParam=$('.list-group');
         let alertFio="Нужнно ввести не менее 2-х символов в этом поле";
-        // alert($('#gender')[0].value.toLowerCase().indexOf("м")!=0&&$('#gender')[0].value.toLowerCase().indexOf("ж")!=0);
         if ($('#surname')[0].value.length<2){
             $('#surname').focus();
             alert(alertFio);

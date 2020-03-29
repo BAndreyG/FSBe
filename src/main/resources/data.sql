@@ -7,8 +7,8 @@ FROM news;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
 INSERT INTO users (surname, name, patronymic, gender, password)
-VALUES ('Васёв', 'user', 'Васильевич', 'м', '$2a$10$8E9T8IrsfJllvBHDhsFR4Ovv6I6NsjKqbNss7LvTziVZwAvMKpuSW'),
-       ('Петров', 'admin', 'Петрович', 'м', '$2a$10$DIweDRnnDQ43mtxsgbwfq.WjhOpYRZ39BKGBc8zso5mpEhATV.jZe');
+VALUES ('Васёв', 'user', 'Васильевич', 'м', '$2a$10$HhWIdKerHw97lQDJkDgbDeXVpWJ2n8b3mUgrh8X5NPWhdLvYoeQJu'),
+       ('Петров', 'admin', 'Петрович', 'м', '$2a$10$eRKpB7Lj7iTdv1mMRa8KHudu7EmG.3KrMnMc2ujpCbXUHhj2m.4yu');
 
 INSERT INTO user_roles (role, user_id)
 VALUES ('ROLE_USER', 100000),
@@ -29,6 +29,16 @@ VALUES (100000, 100002),
 
 INSERT INTO news (head, mintext, news, category_id, link)
 VALUES ('Ёмобила', 'В Сколково изобрели новый телефон', '...из наночастиц... наноразмеры... ищут...', 100002,
+        'www://skolkovo.ru'),
+       ('Пандемия', 'Смертельная зараза на пороге', 'Китай чихал на весь мир, многии болеют...', 100003,
+        'www://medicina.ru'),
+       ('Австралия', 'Сумчатые животные ', 'Коала объелась листьев эвкалипта и обогнала кенгуру', 100004,
+        'www://worldtravel.ru'),
+       ('Спортивная рыбалка', 'На Амуре прошли соревнования по спортивной рыбалке',
+        'Победил рыбак поймавший больше всех рыбы', 100005, 'www://amur.ru'),
+       ('Прекрасная Якутия', 'Самые лучшие экстремальные путешествия',
+        'Туристы со всей страны рвуться в Якутию посмотреть на её красоты', 100004, 'www://ykyti.ru'),
+       ('Ёмобила', 'В Сколково изобрели новый телефон', '...из наночастиц... наноразмеры... ищут...', 100002,
         'www://skolkovo.ru'),
        ('Пандемия', 'Смертельная зараза на пороге', 'Китай чихал на весь мир, многии болеют...', 100003,
         'www://medicina.ru'),

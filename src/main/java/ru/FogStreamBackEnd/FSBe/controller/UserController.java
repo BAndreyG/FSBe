@@ -20,7 +20,7 @@ import java.net.URI;
 import java.security.Principal;
 
 @Controller
-@RequestMapping(value = UserController.REST_URL) //, produces = MediaType.APPLICATION_JSON_VALUE
+@RequestMapping(value = UserController.REST_URL)
 public class UserController {
 
     static final String REST_URL ="/profile";
@@ -34,13 +34,11 @@ public class UserController {
     public void del(@PathVariable int id){
         log.info("delete id"+id);
         service.del(id);
-//        return "redirect:login";
     }
 
     @GetMapping
-    public String getPr( Model model, Principal principal){
+    public String getId( Model model, Principal principal){
         AuthorizedUser loginedUser = (AuthorizedUser) ((Authentication) principal).getPrincipal();
-
         int id=loginedUser.getUser().id();
         log.info("get user id = "+ id);
         model.addAttribute("user", UserUtil.convertUserTo(service.getId(id),new UserTo()));
@@ -48,8 +46,8 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createOrUpdate(@RequestBody UserTo userTo){
-        User created=new User();
+    public ResponseEntity<UserTo> createOrUpdate(@RequestBody UserTo userTo){
+        UserTo created=new UserTo();
         if (userTo.id()==0) created=service.create(userTo);
         else created=service.update(userTo);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()

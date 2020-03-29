@@ -47,24 +47,35 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public User create(UserTo userTo) {
+    public UserTo create(UserTo userTo) {
         Assert.notNull(userTo, "user must not be null");
-        User user=UserUtil.convertUser(userTo,new User());
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return repo.save(user);
-//        user.setPassword(passwordEncoder.encode(registration.getPassword()));
+        User user=new User();
+        if (userTo.getCategory()!=""){
+            String[] catList=userTo.getCategory().split(";");
+            List<Category> list=new ArrayList<>();
+            for (String s:catList) {
+                list.add(categoryRepo.findByName(s));
+            }
+            user.setCategories(list);
+        }
+        user.setPassword(passwordEncoder.encode(userTo.getPassword()));
+        user=UserUtil.convertUser(userTo,user);
+        return UserUtil.convertUserTo(repo.save(user),new UserTo());
     }
 
-    public User update(UserTo userTo) {
+    public UserTo update(UserTo userTo) {
+        Assert.notNull(userTo, "user must not be null");
         User old=getId(userTo.id());
-        String[] catList=userTo.getCategory().split(";");
-        List<Category> list=new ArrayList<>();
-        for (String s:catList) {
-            list.add(categoryRepo.findByName(s));
+        if (userTo.getCategory()!=""){
+            String[] catList=userTo.getCategory().split(";");
+            List<Category> list=new ArrayList<>();
+            for (String s:catList) {
+                list.add(categoryRepo.findByName(s));
+            }
+            old.setCategories(list);
         }
-//        user.setPassword(passwordEncoder.encode(registration.getPassword()));
-//        Arrays.stream(catList).forEach(list.add(categoryRepo.findByName()));
-        return repo.save(UserUtil.convertUser(userTo,old));
+        if (userTo.getPassword()!="***")old.setPassword(passwordEncoder.encode(userTo.getPassword()));
+        return UserUtil.convertUserTo(repo.save(UserUtil.convertUser(userTo,old)),new UserTo());
     }
 
     @Override

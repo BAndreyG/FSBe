@@ -1,16 +1,19 @@
 package ru.FogStreamBackEnd.FSBe.util;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import ru.FogStreamBackEnd.FSBe.model.Category;
 import ru.FogStreamBackEnd.FSBe.model.Role;
 import ru.FogStreamBackEnd.FSBe.model.User;
+import ru.FogStreamBackEnd.FSBe.repository.CategoryRepo;
 import ru.FogStreamBackEnd.FSBe.to.UserTo;
 
-import java.util.Base64;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static ru.FogStreamBackEnd.FSBe.model.Role.ROLE_USER;
 
 public class UserUtil {
+
     public UserUtil (){}
 
     public static User convertUser(UserTo userTo,User user){
@@ -21,8 +24,11 @@ public class UserUtil {
         if (userTo.getFoto()!=null)user.setFoto(javax.xml.bind.DatatypeConverter.parseBase64Binary(userTo.getFoto().split(",")[1]));
         else user.setFoto(null);
         user.setGender(userTo.getGender());
-        user.setPassword(userTo.getPassword());
-//        user.setCategories();
+        if(userTo.getRoles()==null){
+            Set<Role> role=new HashSet<>();
+            role.add(ROLE_USER);
+            user.setRoles(role);
+        }
         return user;
     }
 
@@ -32,15 +38,10 @@ public class UserUtil {
         userTo.setName(user.getName());
         userTo.setPatronymic(user.getPatronymic());
         userTo.setBirthday(user.getBirthday());
-        if(userTo.getRoles()==null){
-            Set<Role> role=new HashSet<>();
-            role.add(ROLE_USER);
-            userTo.setRoles(role);
-        }
         if (user.getFoto()!=null)userTo.setFoto(new String(Base64.getEncoder().encode(user.getFoto())));
         else userTo.setFoto(null);
         userTo.setGender(user.getGender());
-        userTo.setPassword(user.getPassword());
+        userTo.setPassword("***");
         userTo.setCategories(user.getCategories());
         return userTo;
     }
