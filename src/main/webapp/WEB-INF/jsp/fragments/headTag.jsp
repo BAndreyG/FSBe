@@ -4,8 +4,6 @@
 
 <head>
 
-<%--    <base href="${pageContext.request.contextPath}/"/>--%>
-
     <link rel="stylesheet" href="resources/css/style.css">
     <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 

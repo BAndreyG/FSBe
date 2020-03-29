@@ -15,7 +15,7 @@
 <script src="/resources/js/datatables.js" type="text/javascript"></script>
 <script src="/resources/js/dtable.js" type="text/javascript"></script>
 <div class="jumbotron">
-    <table border="3"  id="table">
+    <table border="3" id="table">
         <thead>
         <tr>
             <th>Заголовок</th>

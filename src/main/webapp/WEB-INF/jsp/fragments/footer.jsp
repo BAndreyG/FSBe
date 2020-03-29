@@ -1,8 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%--https://getbootstrap.com/docs/4.0/examples/sticky-footer/--%>
 <footer class="footer">
-    <%--    <link rel="stylesheet" href="resources/css/bootstrap.min.css">--%>
     <div class="container">
         <div class="row">
             <div class="col-2" id="buttons">
@@ -24,5 +22,5 @@
             </div>
         </div>
     </div>
-        <script type="text/javascript" src="resources/js/footer.js"></script>
+    <script type="text/javascript" src="resources/js/footer.js"></script>
 </footer>
